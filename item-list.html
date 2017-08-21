@@ -1,1 +1,11 @@
 <title>item list</title>
+<table>
+    <tr>
+       <th>id</th> 
+       <th>name</th>
+    </tr>
+    <tr ng-repeat="item in ctrl.items">
+        <td>item.id</td>
+        <td>item.name</td>
+    </tr>
+</table>
