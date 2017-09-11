@@ -2,8 +2,8 @@ module test{
 
     angular.module('test', 
     [
-        'ngSanitize'
-        
+        'ngSanitize',
+        'ngRoute'
     ])
 
 } 
