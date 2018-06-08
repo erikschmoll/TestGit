@@ -2,7 +2,6 @@
 const localStorage  = require('localStorage')
 const JsonStorage   = require('json-storage').JsonStorage
 const uuidv4        = require('uuid/v4')
-const AuthService   = require('./auth.service')
 
 class StorageService {
     constructor() {

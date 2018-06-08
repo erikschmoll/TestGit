@@ -1,15 +1,15 @@
 'use strict'
 var RouterHandler = require('../routes/router');
-var AppCtrl     = require('../controllers/app.controller')
+var StatsCtrl     = require('../controllers/stats.controller')
 
 
 RouterHandler.addEndpointWithOutAuth({
     verb: 'get',
-    path: '/stats/:id',
-    handler: AppCtrl.stats
+    path: '/stats/:type',
+    handler: StatsCtrl.post
 });
 RouterHandler.addEndpointWithOutAuth({
     verb: 'get',
-    path: '/ping/:id',
-    handler: AppCtrl.ping
+    path: '/stats',
+    handler: StatsCtrl.get
 });

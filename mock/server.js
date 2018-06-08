@@ -30,11 +30,11 @@ app.use((req, res, next) => {
 
 //routes
 RouterHandler.loadRoutes(routerNode);
-app.use('/api', routerNode);
+app.use('/api/v1', routerNode);
 
 // App config
 app.get('/', (req, res) => {
-  res.send('Hello world\n');
+  res.send('app-server mock [appMock]\n');
 });
 
 
