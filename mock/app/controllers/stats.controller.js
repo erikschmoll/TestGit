@@ -36,6 +36,21 @@ class StatsController {
                 ResServ.error(res, messages.InternalServerError);
             }
         };
+
+        this.ping = (req, res, next) => {
+            try{
+                StatsServ.ping()
+                .then((ping) => {
+                    ResServ.ok(ResEnum.Value, "ping", ping, res, next);
+                })
+                .catch((e) => {
+                    ResServ.error(res, messages.BadRequest);
+                });
+            }
+            catch(e){
+                ResServ.error(res, messages.InternalServerError);
+            }
+        };
     }
 }
 module.exports = new StatsController();

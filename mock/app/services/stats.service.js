@@ -60,7 +60,15 @@ class StatsService {
         }
         this.ping = (id)=>{
             return new Promise((resolve, reject)=>{
-                
+                try{
+                    resolve({
+                        code: 0,
+                        message: "active"
+                      })
+                }
+                catch(e){
+                    reject(e)
+                }
             })
         }
     }

@@ -13,3 +13,8 @@ RouterHandler.addEndpointWithOutAuth({
     path: '/stats',
     handler: StatsCtrl.get
 });
+RouterHandler.addEndpointWithOutAuth({
+    verb: 'get',
+    path: '/ping',
+    handler: StatsCtrl.ping
+});
