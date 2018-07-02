@@ -51,6 +51,24 @@ class StatsController {
                 ResServ.error(res, messages.InternalServerError);
             }
         };
+
+        this.requests = (req, res, next) => {
+            try{
+                StatsServ.requests(req.query)
+                .then((requests) => {
+                    //ResServ.ok(ResEnum.Value, "requests", requests, res, next);
+                    res.status(200);
+                    res.json(requests);
+                    next();
+                })
+                .catch((e) => {
+                    ResServ.error(res, messages.BadRequest);
+                });
+            }
+            catch(e){
+                ResServ.error(res, messages.InternalServerError);
+            }
+        };
     }
 }
 module.exports = new StatsController();

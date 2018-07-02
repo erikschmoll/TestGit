@@ -1,5 +1,6 @@
 'use strict'
 const StorageServ = require('./storage.service')
+const _ = require('underscore')
 
 
 class StatsService {
@@ -58,7 +59,7 @@ class StatsService {
                 }
             })
         }
-        this.ping = (id)=>{
+        this.ping = ()=>{
             return new Promise((resolve, reject)=>{
                 try{
                     resolve({
@@ -67,6 +68,41 @@ class StatsService {
                       })
                 }
                 catch(e){
+                    reject(e)
+                }
+            })
+        }
+        this.requests = (args)=>{
+            return new Promise((resolve, reject)=>{
+                try{
+                    var req = []
+                    var hours = [
+                      '00','01','02','03','04','05',
+                      '06','07','08','09','10','11',
+                      '12','13','14','15','16','17',
+                      '18','19','20','21','22','23']
+                    var max = 10, min = 0
+                    var res = []
+                    hours.forEach((hour) => {
+                        var count = Math.floor(Math.random() * (max - min + 1)) + min
+                        req.push({
+                                "hour": hour,
+                                "date": "02/07/2018",
+                                "count": count
+                            })
+                    });
+                    var nfrom = Number(args.from)
+                    var nto = Number(args.to)
+                    req.forEach(r => {
+                      var nhour = Number(r.hour)
+                      if(nhour>=nfrom && nhour<=nto){
+                        res.push(_.clone(r))
+                      }
+                    });
+                    resolve(res)
+                }
+                catch(e){
+                    console.error(e)
                     reject(e)
                 }
             })
